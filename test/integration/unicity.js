@@ -11,6 +11,6 @@ describe("Integration", () => {
         o.add(`Test${x}`)
       }
       expect(o.items()).to.be.ok
-    }).timeout(10000)
+    }).timeout(100000)
   })
 })
