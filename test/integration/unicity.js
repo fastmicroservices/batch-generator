@@ -8,7 +8,7 @@ describe("Integration", () => {
     beforeEach(() => { o = new unicity() })
     it("Will handle 10M elements", () => {
       for (let x = 0; x < 10000000; x++) {
-        o.add(`Test${x}`)
+        o.addIfNew(`Test${x}`)
       }
       expect(o.items()).to.be.ok
     }).timeout(100000)
