@@ -23,4 +23,4 @@ for (let x = 0; x < count; x++) {
     }
 }
 reportProgress(count)
-process.stderr.write(`\nCollisions: ${collisions}`)
+process.stderr.write(`\n\nCollisions: ${collisions}\n\n`)
