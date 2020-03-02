@@ -16,11 +16,12 @@ Produces a different string each time it gets called.
 
 ### Hash
 
-Turns a seed into a code, in such a way that even very similar seeds generate abherrantly different hashes.
+Turns a seed into a code, in such a way that even very similar seeds generate abherrantly different hashes. Offers a 256-bit hex value.
 
 ### Reencode
 
 Depending on the application needs, the code will have an alphabet and length.
+Takes a hex value (arbitrarily long). Outputs a set length of symbols from the alphabet.
 
 ### Ensure Unique
 
