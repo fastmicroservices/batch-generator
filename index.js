@@ -5,6 +5,7 @@ const seed = require('./seed')
 const hash = require('./code-hex-by-hash')
 const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_='
 const reencoder = require('./code-reencode')(ALPHABET, 10)
+const Reporter = require('./reporter')
 
 const count = 10000000
 const set = new Set()
@@ -14,14 +15,7 @@ const g = generator(set, seed, hash, reencoder, () => {
     collisions++
 })
 const reportingStep = Math.ceil(count / 200)
-const start = Date.now()
-const reportProgress = (x) => {
-    const current = Date.now()
-    const diff = current - start
-    const percentage = x * 100 / count
-    const eta = new Date(start + diff * count / x)
-    process.stderr.write(`ETA: ${eta.toLocaleDateString(undefined, {hour:'numeric', minute:'2-digit'})} ${percentage}%\n`)
-}
+const reportProgress = Reporter(count, process.stderr)
 for (let x = 0; x < count; x++) {
     console.log(g.next().value)
     if (0 === x % reportingStep) {
