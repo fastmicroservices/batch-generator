@@ -11,6 +11,11 @@ module.exports = function* (workingSetOrAlphabet, seedOrLength, reportCollision,
     seed = Seed
     reencoder = Reencoder(workingSetOrAlphabet, seedOrLength || 10)
   }
+  else {
+    workingSet = workingSet || new Set()
+    seed = seed || Seed
+    reencoder = reencoder || Reencoder('0123456789abcdefghijklmnopqrstuvwxyz', 10)
+  }
   reportCollision = reportCollision || (() => {})
   for (;;) {
     const value = reencoder(hash(seed()))
