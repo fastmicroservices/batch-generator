@@ -14,8 +14,7 @@ module.exports = function* (workingSetOrAlphabet, seedOrLength, reportCollision,
   reportCollision = reportCollision || (() => {})
   for (;;) {
     const value = reencoder(hash(seed()))
-    if (!workingSet.exists(value)) {
-      workingSet.add(value)
+    if (workingSet.addIfNew(value)) {
       yield value
     }
     else {
