@@ -11,6 +11,10 @@ describe("Unicity", () => {
     expect(o.addIfNew(1)).to.be.ok
     expect(o.addIfNew(2)).to.be.ok
   })
+  it("Will find existing keys and not allow repeat", () => {
+    expect(o.addIfNew(1)).to.be.ok
+    expect(o.addIfNew(1)).to.be.not.ok
+  })
   it("Will give all items passed in", () => {
     o.addIfNew(1)
     o.addIfNew(2)
