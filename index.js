@@ -7,9 +7,9 @@ const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 const reencoder = require('./code-reencode')(ALPHABET, 10)
 
 const count = 10000000
-let set = new Set()
+const set = new Set()
 let collisions = 0
-let g = generator(set, seed, hash, reencoder, () => {
+const g = generator(set, seed, hash, reencoder, () => {
     process.stderr.write('*')
     collisions++
 })
