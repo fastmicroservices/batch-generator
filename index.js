@@ -18,7 +18,7 @@ const start = Date.now()
 const reportProgress = (x) => {
     const current = Date.now()
     const diff = current - start
-    const percentage = x / count
+    const percentage = x * 100 / count
     const eta = new Date(start + diff * count / x)
     process.stderr.write(`ETA: ${eta.toLocaleDateString(undefined, {hour:'numeric', minute:'2-digit'})} ${percentage}%\n`)
 }
