@@ -16,7 +16,7 @@ Produces a different string each time it gets called.
 
 ### Hash
 
-Turns a seed into a code, in such a way that even very similar seeds generate abherrantly different hashes. Offers a 256-bit hex value.
+Turns a message into a code, in such a way that even very similar seeds generate abherrantly different hashes. Offers a 256-bit hex value.
 
 ### Reencode
 
