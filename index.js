@@ -1,21 +1,12 @@
 const generator = require('./generator')
 const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_='
-const Reporter = require('./reporter')
-
+const rloop = require('./reportingLoop')
 const count = 10000000
 let collisions = 0
 const reportCollision = () => {
-    process.stderr.write('*')
+    process.stderr.write('\n*\n')
     collisions++
 }
 const g = generator(ALPHABET, 10, reportCollision)
-const reportingStep = Math.ceil(count / 200)
-const reportProgress = Reporter(count, process.stderr)
-for (let x = 0; x < count; x++) {
-    console.log(g.next().value)
-    if (0 === x % reportingStep) {
-        reportProgress(x)
-    }
-}
-reportProgress(count)
+rloop(count, () => console.log(g.next().value), process.stderr, 200)
 process.stderr.write(`\n\nCollisions: ${collisions}\n\n`)
